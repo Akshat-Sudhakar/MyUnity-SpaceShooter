@@ -1,9 +1,3 @@
-# ========================================
-# Unity Project Git Ignore File
-# Works for Unity 2019 and newer
-# ========================================
-
-# --- Unity generated folders ---
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -12,15 +6,8 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 UserSettings/
-
-# --- Asset meta data should be included ---
-# But not the following cache directories
-[Aa]sset[Ss]tore/
-[Aa]ssets/AssetStoreTools*
-
-# --- Visual Studio / VS Code ---
+.idea/
 .vs/
-.vscode/
 *.csproj
 *.unityproj
 *.sln
@@ -31,52 +18,10 @@ UserSettings/
 *.pidb
 *.booproj
 *.svd
-
-# --- JetBrains Rider ---
-.idea/
-*.sln.iml
-
-# --- Builds (Play Mode or export folders) ---
-[Bb]uild/
-[Bb]uilds/
-*_BackUpThisFolder_ButDontShipItWithYourGame/
-*.apk
-*.aab
-*.exe
-*.app
-*.xcodeproj
-*.xcworkspace
-
-# --- Logs and crash dumps ---
-*.stackdump
-*.log
-*.vspscc
 *.pdb
 *.mdb
-
-# --- OS generated files ---
-.DS_Store
-Thumbs.db
-ehthumbs.db
-Icon?
-Desktop.ini
-
-# --- Other ---
-[Tt]emp/
-*.tmp
+*.opendb
+*.VC.db
 *.bak
-*.old
-*.orig
 *.swp
-*.swo
-*.~*
-*.crash
-*.pid
-*.seed
-*.pid.lock
-
-# --- Builds and package cache ---
-[Ll]ibrary/PackageCache/
-[Bb]uild*/**/*
-[Bb]in/
-[Oo]bj/
+*.DS_Store
