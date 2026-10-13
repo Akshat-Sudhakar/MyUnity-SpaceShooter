@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first Update
-    //[Serializedfield] //help the desginers to change the speed but still be a private variable
     [SerializeField]
     private float _speed = 3.5f;
     private readonly float _speedMultiplier = 2;
@@ -13,16 +11,16 @@ public class Player : MonoBehaviour
     private GameObject _laserprefab;
     [SerializeField]
     private float _fireRate = 0.5f;
-    private float _canFire = -1f;  // Not readonly because it changes
+    private float _canFire = -1f;
     [SerializeField]
-    private int _lives = 3;  // Not readonly because it changes with damage
+    private int _lives = 3;
     private Spawnmanager _spawnManager;
     [SerializeField]
-    private bool _IsTripleShotActive = false;  // Not readonly because it changes with power-up
+    private bool _IsTripleShotActive = false;
     [SerializeField]
     private GameObject _TripleShotprefab;
     [SerializeField]
-    private bool _IsSpeedPowerUpActive = false;  // Not readonly because it changes with power-up
+    private bool _IsSpeedPowerUpActive = false;
     [SerializeField]
     private GameObject _shieldsprefab;
     [SerializeField]
@@ -44,7 +42,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        //take the current position = new position ( 0,0,0 )
         transform.position = new Vector3(0, 0, 0);
         _spawnManager = FindObjectOfType<Spawnmanager>();
         if (_spawnManager == null)
@@ -68,7 +65,6 @@ public class Player : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         CalculateMovement();
@@ -82,14 +78,6 @@ public class Player : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        //transform.Translate(Vector3.right);// moves it at the speed of sound i.e once per frame 
-
-        //transform.Translate(Vector3.right * horizontalInput * _speed * Time.deltaTime);//moves it at one m/s if u want any custom value just multiple it by whatever time u want
-        //transform.Translate(Vector3.up *verticalInput * _speed * Time.deltaTime);
-
-        //new vector3(1,0,0)*input*3.5f*real time
-
-
         if (_IsSpeedPowerUpActive == false)
         {
             transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * _speed * Time.deltaTime);
@@ -99,7 +87,6 @@ public class Player : MonoBehaviour
             transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * _speed * _speedMultiplier * Time.deltaTime);
         }
 
-        //creating player bounds
         if (transform.position.y >= 0)
         {
             transform.position = new Vector3(transform.position.x, 0, 0);
@@ -108,8 +95,6 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, -3.8f, 0);
         }
-        //transform.position=new Vector3(transform.position.x, Mathf.Clamp(transform.position.y,-3.8f,0),0); optimized upper code 
-
         if (transform.position.x >= 10f)
         {
             transform.position = new Vector3(-10f, transform.position.y, 0);
@@ -221,7 +206,6 @@ public class Player : MonoBehaviour
         {
             _shieldvisualizer.SetActive(true);
             Debug.Log("Player.ShieldPowerUpActive: Activated existing shield visualizer.");
-            // If it has an Animator or ParticleSystem, try to restart them
             var anim = _shieldvisualizer.GetComponent<Animator>();
             if (anim != null)
             {
@@ -235,7 +219,6 @@ public class Player : MonoBehaviour
         }
         else if (_shieldsprefab != null)
         {
-            // Instantiate the shield prefab as a child of the player so its visuals are visible
             _shieldvisualizer = Instantiate(_shieldsprefab, transform.position, Quaternion.identity, transform);
             _shieldvisualizer.transform.localPosition = Vector3.zero;
             Debug.Log("Player.ShieldPowerUpActive: Instantiated shield prefab and activated it.");

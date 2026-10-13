@@ -12,8 +12,6 @@ public class Spawnmanager : MonoBehaviour
     [SerializeField]
     private GameObject[] _powerups;
     
-
-    // Start is called before the first frame update
     public void StartSpawning()
     {
         StartCoroutine(SpawnRoutine());
@@ -81,7 +79,6 @@ public class Spawnmanager : MonoBehaviour
         _stopSpawning = true;
         StopAllCoroutines();
         Debug.Log("Spawning stopped: Player died.");
-        // Destroy all existing enemies
         Enemy[] enemies = FindObjectsOfType<Enemy>();
         foreach (Enemy e in enemies)
         {

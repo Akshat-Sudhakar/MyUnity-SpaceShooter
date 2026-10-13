@@ -7,7 +7,6 @@ public class Laser : MonoBehaviour
     [SerializeField]
     private readonly float _laserSpeed = 8f;
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -22,7 +21,7 @@ public class Laser : MonoBehaviour
                 Destroy(transform.parent.gameObject);
             }
 
-            Destroy(this.gameObject);//delete gameobject in this script
+            Destroy(this.gameObject);
         }
 
     }

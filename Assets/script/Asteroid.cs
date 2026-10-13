@@ -9,13 +9,11 @@ public class Asteroid : MonoBehaviour
     [SerializeField]
     private GameObject _explosionPrefab;
     private Spawnmanager _Spawnmanager;
-    // Start is called before the first frame update
     private void Start()
     {
         _Spawnmanager = GameObject.Find("spawn_manager").GetComponent<Spawnmanager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Rotate(Vector3.forward * _rotateSpeed * Time.deltaTime);

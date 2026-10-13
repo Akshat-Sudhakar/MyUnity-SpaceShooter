@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField]
     private float _speed = 4f;
     [SerializeField]
@@ -43,7 +42,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
@@ -55,7 +53,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) // function for destroying and colliding objects
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log($"Enemy.OnTriggerEnter2D: collided with '{other.name}' tag='{other.tag}'");
 
@@ -66,8 +64,6 @@ public class Enemy : MonoBehaviour
             {
                 player.Damage();
             }
-            //other.transform.GetComponent<Player>().Damage();     //gets the damage component from the other script
-
             if (_anim != null)
             {
                 _anim.SetTrigger("OnEnemyDeath");

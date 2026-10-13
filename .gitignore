@@ -25,3 +25,5 @@ UserSettings/
 *.bak
 *.swp
 *.DS_Store
+
+.fake
